@@ -57,7 +57,8 @@ _CPPFLAGS = -D'PACKAGE="$(PKGNAME)"' -D'PROGRAM_VERSION="$(_VERSION)"'
 _COPYING = COPYING
 
 # Used by mk/dist.mk
-_EVERYTHING = $(__EVERYTHING_ALL_COMMON) src/libhaiku.c src/libhaiku.h
+_EVERYTHING = $(__EVERYTHING_ALL_COMMON) src/libhaiku.c src/libhaiku.h  \
+              DEPENDENCIES
 
 # }}
 
