@@ -102,7 +102,7 @@ void libhaiku_perror(const char* s)
 
 #ifdef ENETDOWN
     case ENETDOWN:
-      H("Stay the patient course.\n""Of little worth is your ire.\n""The network is down.\n"
+      H("Stay the patient course.\n""Of little worth is your ire.\n""The network is down.\n",
 	"Your vast achievements\n""are now only dreams.\n""The network is down.\n");
 #endif
 
@@ -127,7 +127,7 @@ void libhaiku_perror(const char* s)
     case EMLINK:
 #endif
 #if defined(EAGAIN) || defined(ENFILE) || defined(EMFILE) || defined(EUSERS) || defined(EMLINK)
-      H("ABORTED effort:\n""Close all that you have.\n""You ask way too much.\n"
+      H("ABORTED effort:\n""Close all that you have.\n""You ask way too much.\n",
 	"The code was willing\n""It considered your request\n""But the chips were weak.\n");
 #endif
 
@@ -163,7 +163,7 @@ void libhaiku_perror(const char* s)
 	"Rather than a beep\n""Or a rude error message,\n""These words: “File not found.”\n",
 	"Three things are certain:\n""Death, taxes, and lost data.\n""Guess which has occurred.\n",
 	"Having been erased,\n""The document you're seeking\n""Must now be retyped.\n",
-	"Everything is gone.\n""Your life's work has been destroyed.\n""Squeeze trigger (yes/no)?\n"
+	"Everything is gone.\n""Your life's work has been destroyed.\n""Squeeze trigger (yes/no)?\n",
 	"Spring will come again,\n""But it will not bring with it\n""Any of your files.\n");
 #endif
 
@@ -194,7 +194,7 @@ void libhaiku_perror(const char* s)
 
 #ifdef EHOSTDOWN
     case EHOSTDOWN:
-      H("Windows NT crashed.\n""I am the Blue Screen of Death.\n""Noone hears your screams.\n"
+      H("Windows NT crashed.\n""I am the Blue Screen of Death.\n""Noone hears your screams.\n",
 	"Won't you please observe\n""a brief moment of silence\n""For the dead server?\n");
 #endif
 
@@ -205,14 +205,14 @@ void libhaiku_perror(const char* s)
 
 #ifdef EFAULT
     case EFAULT:
-      H("A crash reduces\n""your expensive computer\n""to a simple stone.\n"
-	"Seeing my great fault.\n""Through a darkening red screen.\n""I begin again.\n"
+      H("A crash reduces\n""your expensive computer\n""to a simple stone.\n",
+	"Seeing my great fault.\n""Through a darkening red screen.\n""I begin again.\n",
 	"Memory shaken,\n""the San Andreas of all\n""invalid page faults.\n");
 #endif
 
 #ifdef EINVAL
     case EINVAL:
-      H("Something you entered\n""transcended parameters.\n""So much is unknown.\n"
+      H("Something you entered\n""transcended parameters.\n""So much is unknown.\n",
 	"Some incompetence\n""fundamentally transcends\n""mere error message.\n");
 #endif
 
@@ -258,11 +258,11 @@ void libhaiku_perror(const char* s)
 
     default:
       if (s)  perror(s);
-      H("Error messages\n""cannot completely convey.\n""We now know shared loss.\n"
-	"Errors have occurred.\n""We won't tell you where or why.\n""Lazy programmers.\n"
-	"To have no errors.\n""Would be life without meaning.\n""No struggle, no joy.\n"
-	"There is a chasm\n""of carbon and silicon\n""the software can't bridge.\n"
-	"Beauty, success, truth\n""He is blessed who has two.\n""Your program has none.\n"
+      H("Error messages\n""cannot completely convey.\n""We now know shared loss.\n",
+	"Errors have occurred.\n""We won't tell you where or why.\n""Lazy programmers.\n",
+	"To have no errors.\n""Would be life without meaning.\n""No struggle, no joy.\n",
+	"There is a chasm\n""of carbon and silicon\n""the software can't bridge.\n",
+	"Beauty, success, truth\n""He is blessed who has two.\n""Your program has none.\n",
 	"Technical support\n""would be a flowing source of\n""sweet commiseration.\n");
     }
 }

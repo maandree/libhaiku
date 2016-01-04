@@ -42,7 +42,7 @@ is zero. If you rather it did, you can use the macro
     if (errno && s__)            \\
       perror(s__);               \\
     errno = errno ? errno : -1;  \\
-    libhaiku_perror(s__);        \\
+    libhaiku_perror(0);          \\
   } while (0)
 .fi
 .SH "SEE ALSO"
