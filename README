@@ -1,0 +1,15 @@
+NAME
+	libhaiku - Poetic error messages
+
+DESCRIPTION
+	libhaiku is an API on top of a collection of haiku,
+	that lets a programmer make a program print haiku for
+	error messages. Instead of calling perror(3), the
+	program should call libhaiku_perror(3).
+
+RATIOANLE
+	It is more fun and harmonious this way.
+
+SEE ALSO
+	perror(3)
+
