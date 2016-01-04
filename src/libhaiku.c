@@ -52,9 +52,9 @@ static int random_int(int n)
 /**
  * Pick a random haiku.
  * 
- * @param   str...  `NULL`-terminated list of haikus.
+ * @param   str...  `NULL`-terminated list of haiku.
  *                  Must contain at least one haiku.
- * @return          One of the haikus, randomly selected.
+ * @return          One of the haiku, randomly selected.
  */
 #ifdef __GNUC__
 __attribute__((__sentinel__))
