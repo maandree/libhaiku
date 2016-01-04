@@ -1,0 +1,68 @@
+# Copyright (C) 2016  Mattias Andrée <maandree@member.fsf.org>
+# 
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.  This file is offered as-is,
+# without any warranty.
+
+
+### This file will be stored to Makefile once you have run ./configure. ###
+### See INSTALL for information on how to install this package.         ###
+
+
+
+##### What is below this line is configurable, but is seldom useful. #####
+
+
+# Additional options for compiling info and HTML manuals.
+INFO_FLAGS =
+
+# Additional options for compiling DVI, PDF, and PostScript manuals.
+TEXINFO_FLAGS =
+
+# The name of the package as it should be installed.
+PKGNAME = libhaiku
+
+
+
+##### Nothing interesting below this. #####
+
+
+# In case you want add some configurations. Primarily
+# intended for maintainers. Perhaps add GPG_KEY here.
+# Of course, you can declare everthing with ./configure,
+# but with this you are less likely to forget it.
+-include .make-configurations
+
+
+# YOU, AS A USER, SHOULD NOT CHANGE THESE VARIABLES. {{
+# They specify how the reusable makefiles in mk/ shall behave.
+
+# Package information.
+_PROJECT = libhaiku
+_VERSION = 1.0
+
+# Used by mk/lang-c.mk
+_C_STD = c99
+_PEDANTIC = yes
+_LIB = libhaiku
+_OBJ_libhaiku = libhaiku
+_SO_VERSION_libhaiku = $(_VERSION)
+_SO_MAJOR_libhaiku = $(shell echo $(_SO_VERSION_libhaiku) | cut -d . -f 1)
+_HEADER_DIRLEVELS = 1
+_CPPFLAGS = -D'PACKAGE="$(PKGNAME)"' -D'PROGRAM_VERSION="$(_VERSION)"'
+
+# Used by mk/copy.mk
+_COPYING = COPYING
+
+# Used by mk/dist.mk
+___EVERYTHING_H = libhaiku.h
+_EVERYTHING = $(foreach F,$(___EVERYTHING_H),src/$(F).h)  \
+              $(__EVERYTHING_ALL_COMMON)
+
+# }}
+
+
+# All of the make rules and the configurations.
+include $(v)mk/all.mk
+

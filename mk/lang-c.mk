@@ -191,7 +191,7 @@ endif
 # BUILD RULES:
 
 .PHONY: cmd-c
-cmd-c: $(foreach B,$(_BIN) $(_SBIN) $(_LIBEXEC))
+cmd-c: $(foreach B,$(_BIN) $(_SBIN) $(_LIBEXEC),bin/$(B))
 
 .PHONY: lib-c
 lib-c: $(foreach B,$(_LIB),bin/$(B).so)
