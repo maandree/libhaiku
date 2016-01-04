@@ -1,0 +1,38 @@
+@node Overview
+@chapter Overview
+
+@command{libhaiku} is a simply error message printing C library
+with a collection of haiku that it prints instead of traditional
+error messages.
+
+A known issue is that must of the haiku uses 5--7--5@tie{}syllables
+rather than 5--7--5@tie{}morae. This is however of lesser importance,
+as it is much harder to write a 5--7--5@tie{}mora haiku than a
+5--7--5@tie{}syllable haiku.
+
+To use @command{libhaiku} include the head file @file{<libhaiku.h>}
+and link with @option{-lhaiku}. The function
+@example
+void libhaiku_perror(const char* s);
+@end example
+is used to print the error
+messages. @code{libhaiku_perror} shall print an error message in the
+format of a haiku, appropriate for the current value of @code{errno}.
+If there is not haiku available for the current value of @code{errno},
+@code{libhaiku_perror} shall call @code{perror} with @code{s} as its
+argument unless @code{s} is @code{NULL}, and then print a generic haiku.
+
+Unlike @code{perror}, @code{libhaiku_perror} shall not print anything
+if @code{errno} is zero. If you rather it did, you can use the macro
+
+@example
+#define libhaiku_perror(s)       \
+  do @{                           \
+    const char *s__ = (s);       \
+    if (errno && s__)            \
+      perror(s__);               \
+    errno = errno ? errno : -1;  \
+    libhaiku_perror(s__);        \
+  @} while (0)
+@end example
+
