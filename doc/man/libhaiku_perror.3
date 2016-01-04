@@ -1,0 +1,60 @@
+.TH LIBHAIKU_PERROR 3 LIBHAIKU
+.SH NAME
+libhaiku_perror \- Print a poetic error message
+.SH SYNOPSIS
+.nf
+#include <libhaiku.h>
+
+void \fBlibhaiku_perror\fP(const char *\fIs\fP);
+.fi
+.PP
+Link with
+.IR \-lhaiku .
+.SH DESCRIPTION
+.B libhaiku_perror
+shall print an error message in the format of a haiku, appropriate
+for the current value of
+.BR errno .
+If there is not haiku available for the current value of
+.BR errno ,
+.B libhaiku_perror
+shall call
+.BR perror (3)
+with
+.I s
+as its argument unless
+.I s
+is
+.BR NULL ,
+and then print a generic haiku.
+.PP
+Unlike
+.BR perror (3),
+.B libhaiku_perror
+shall not print anything if
+.B errno
+is zero.
+.SH "SEE ALSO"
+.BR libhaiku (7),
+.BR perror (3)
+.SH "KNOWN ISSUES"
+Must of the haiku uses 5\-7\-5 syllables rather than 5\-7\-5 morae.
+This is however of lesser importance, as it is much harder to write
+a 5\-7\-5 mora haiku than a 5\-7\-5 syllable haiku.
+.SH LICENSE
+Copyright \(co 2016  Mattias Andrée
+.br
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+.br
+There is NO WARRANTY, to the extent permitted by law.
+.PP
+Copying and distribution of this manual, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without any warranty.
+.SH BUGS
+Please report bugs to <https://github.com/maandree/libhaiku/issues>
+or to <maandree@member.fsf.org>.
+

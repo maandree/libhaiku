@@ -13,7 +13,6 @@
 
 PKGNAME=libhaiku
 MAN_SECTION_SUFFIX=
-MAN_SECTION=1
 
 
 list_optional_features_help ()

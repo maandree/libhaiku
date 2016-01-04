@@ -53,6 +53,11 @@ _H = libhaiku
 _HEADER_DIRLEVELS = 1
 _CPPFLAGS = -D'PACKAGE="$(PKGNAME)"' -D'PROGRAM_VERSION="$(_VERSION)"'
 
+# Used by mk/man.mk
+_MAN_PAGE_SECTIONS = 3 7
+_MAN_3 = libhaiku_perror
+_MAN_7 = libhaiku
+
 # Used by mk/copy.mk
 _COPYING = COPYING
 
