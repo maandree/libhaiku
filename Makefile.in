@@ -58,7 +58,7 @@ _COPYING = COPYING
 
 # Used by mk/dist.mk
 _EVERYTHING = $(__EVERYTHING_ALL_COMMON) src/libhaiku.c src/libhaiku.h  \
-              DEPENDENCIES
+              DEPENDENCIES INSTALL
 
 # }}
 
