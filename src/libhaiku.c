@@ -136,11 +136,21 @@ void libhaiku_perror(const char *s)
       H("I'm sorry, there's... um...\n""insufficient... what's-it-called?\n""The term eludes me...\n");
 #endif
 
+#ifdef ENOSPC
     case ENOSPC:
+#endif
+#ifdef ENOSR
     case ENOSR:
+#endif
+#ifdef ENOBUFS
     case ENOBUFS:
+#endif
+#ifdef EDQUOT
     case EDQUOT:
+#endif
+#if defined(ENOSPC) || defined(ENOSR) || defined(ENOBUFS) || defined(EDQUOT)
       H("Out of memory.\n""We wish to hold the whole sky,\n""But we never will.\n");
+#endif
 
 #ifdef ENOANO
     case ENOANO:
