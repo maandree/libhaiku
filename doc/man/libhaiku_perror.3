@@ -33,7 +33,18 @@ Unlike
 .B libhaiku_perror
 shall not print anything if
 .B errno
-is zero.
+is zero. If you rather it did, you can use the macro
+.PP
+.nf
+#define libhaiku_perror(s)       \\
+  do {                           \\
+    const char *s__ = (s);       \\
+    if (errno && s__)            \\
+      perror(s__);               \\
+    errno = errno ? errno : -1;  \\
+    libhaiku_perror(s__);        \\
+  } while (0)
+.fi
 .SH "SEE ALSO"
 .BR libhaiku (7),
 .BR perror (3)
