@@ -270,7 +270,7 @@ install-lib-c: $(foreach B,$(_LIB),bin/$(B).so)
 	$(Q)$(foreach B,$(_LIB),$(LN) -sf -- "$(B).so.$(_SO_VERSION_$(B))" "$(DESTDIR)$(LIBDIR)/$(B).so.$(_SO_MAJOR_$(B))" &&) $(TRUE)
 	$(Q)$(foreach B,$(_LIB),$(INSTALL_PROGRAM) $(foreach B,$(_LIB),bin/$(B).so) -- "$(DESTDIR)$(LIBDIR)/$(B).so.$(_SO_VERSION_$(B))" &&) $(TRUE)
 	$(Q)$(foreach B,$(_LIB),$(LN) -sf -- "$(B).so.$(_SO_VERSION_$(B))" "$(DESTDIR)$(LIBDIR)/$(B).so" &&) $(TRUE)
-	$(Q)$(INSTALL_DIR) -- $(foreach H,$(_H),"$(DESTDIR)$(INCLUDEDIR)/$(shell dirname "$(H)")")
+	$(Q)$(INSTALL_DIR) -- $(foreach H,$(_H),"$(DESTDIR)$(INCLUDEDIR)/$(shell $(DIRNAME) "$(H)")")
 	$(Q)$(foreach H,$(_H),$(INSTALL_DATA) "src/$(H).h" -- "$(DESTDIR)$(INCLUDEDIR)/$(H).h" &&) $(TRUE)
 	@$(ECHO_EMPTY)
 
@@ -301,7 +301,7 @@ uninstall-lib-c:
 	-$(Q)$(RM) -- $(foreach B,$(_LIB),"$(DESTDIR)$(LIBDIR)/$(B).so.$(_SO_MAJOR_$(B))")
 	-$(Q)$(RM) -- $(foreach B,$(_LIB),"$(DESTDIR)$(LIBDIR)/$(B).so.$(_SO_VERSION_$(B))")
 	-$(Q)$(RM) -- $(foreach H,$(_H),"$(DESTDIR)$(INCLUDEDIR)/$(H).h")
-	-$(Q)$(foreach H,$(_H),if [ ! "$(shell echo "$(H)" | cut -d / -f 1)" = "$(H)" ]; then $(RMDIR) -- "$(DESTDIR)$(INCLUDEDIR)/$(shell dirname "$(H)")"; fi;)
+	-$(Q)$(foreach H,$(_H),if ! $(TEST) "$(shell $(ECHO) "$(H)" | $(CUT) -d / -f 1)" = "$(H)"; then $(RMDIR) -- "$(DESTDIR)$(INCLUDEDIR)/$(shell $(DIRNAME) "$(H)")"; fi;)
 
 endif
 
