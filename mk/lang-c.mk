@@ -55,7 +55,10 @@
 # library, sould should also define
 # _SO_VERSION_$(LIBRARY) and _SO_MAJOR_$(LIBRARY)
 # with the full version number and the major
-# version number, respectively.
+# version number, respectively. Additionally,
+# list all header files that shall be installed
+# in _H, these should not contain the 'src/' prefix
+# or the '.h' suffix.
 
 
 ifdef _C_STD
@@ -267,6 +270,8 @@ install-lib-c: $(foreach B,$(_LIB),bin/$(B).so)
 	$(Q)$(foreach B,$(_LIB),$(LN) -sf -- "$(B).so.$(_SO_VERSION_$(B))" "$(DESTDIR)$(LIBDIR)/$(B).so.$(_SO_MAJOR_$(B))" &&) $(TRUE)
 	$(Q)$(foreach B,$(_LIB),$(INSTALL_PROGRAM) $(foreach B,$(_LIB),bin/$(B).so) -- "$(DESTDIR)$(LIBDIR)/$(B).so.$(_SO_VERSION_$(B))" &&) $(TRUE)
 	$(Q)$(foreach B,$(_LIB),$(LN) -sf -- "$(B).so.$(_SO_VERSION_$(B))" "$(DESTDIR)$(LIBDIR)/$(B).so" &&) $(TRUE)
+	$(Q)$(INSTALL_DIR) -- $(foreach H,$(_H),"$(DESTDIR)$(INCLUDEDIR)/$(shell dirname "$(H)")")
+	$(Q)$(foreach H,$(_H),$(INSTALL_DATA) "src/$(H).h" -- "$(DESTDIR)$(INCLUDEDIR)/$(H).h" &&) $(TRUE)
 	@$(ECHO_EMPTY)
 
 
@@ -295,8 +300,8 @@ uninstall-lib-c:
 	-$(Q)$(RM) -- $(foreach B,$(_LIB),"$(DESTDIR)$(LIBDIR)/$(B).so")
 	-$(Q)$(RM) -- $(foreach B,$(_LIB),"$(DESTDIR)$(LIBDIR)/$(B).so.$(_SO_MAJOR_$(B))")
 	-$(Q)$(RM) -- $(foreach B,$(_LIB),"$(DESTDIR)$(LIBDIR)/$(B).so.$(_SO_VERSION_$(B))")
+	-$(Q)$(RM) -- $(foreach H,$(_H),"$(DESTDIR)$(INCLUDEDIR)/$(H).h")
+	-$(Q)$(foreach H,$(_H),if [ ! "$(shell echo "$(H)" | cut -d / -f 1)" = "$(H)" ]; then $(RMDIR) -- "$(DESTDIR)$(INCLUDEDIR)/$(shell dirname "$(H)")"; fi;)
 
 endif
-
-# TODO install/uninstall header files
 

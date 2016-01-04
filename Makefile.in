@@ -49,6 +49,7 @@ _LIB = libhaiku
 _OBJ_libhaiku = libhaiku
 _SO_VERSION_libhaiku = $(_VERSION)
 _SO_MAJOR_libhaiku = $(shell echo $(_SO_VERSION_libhaiku) | cut -d . -f 1)
+_H = libhaiku
 _HEADER_DIRLEVELS = 1
 _CPPFLAGS = -D'PACKAGE="$(PKGNAME)"' -D'PROGRAM_VERSION="$(_VERSION)"'
 
@@ -56,9 +57,7 @@ _CPPFLAGS = -D'PACKAGE="$(PKGNAME)"' -D'PROGRAM_VERSION="$(_VERSION)"'
 _COPYING = COPYING
 
 # Used by mk/dist.mk
-___EVERYTHING_H = libhaiku.h
-_EVERYTHING = $(foreach F,$(___EVERYTHING_H),src/$(F).h)  \
-              $(__EVERYTHING_ALL_COMMON)
+_EVERYTHING = $(__EVERYTHING_ALL_COMMON) src/libhaiku.c src/libhaiku.h
 
 # }}
 
