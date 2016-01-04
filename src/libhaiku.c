@@ -59,7 +59,7 @@ static int random_int(int n)
 #ifdef __GNUC__
 __attribute__((__sentinel__))
 #endif
-static const char * random_haiku(const char *str, ... /*, NULL */)
+static const char* random_haiku(const char* str, ... /*, NULL */)
 {
   int n = 1;
   const char *s = str;
@@ -88,7 +88,7 @@ static const char * random_haiku(const char *str, ... /*, NULL */)
  * @param  s  The argument to pass to `perror` in case we call back to it.
  *            `NULL` if you never what `perror` to be used.
  */
-void libhaiku_perror(const char *s)
+void libhaiku_perror(const char* s)
 {
 #define H(...)    do { fprintf(stderr, "%s", random_haiku(__VA_ARGS__, NULL)); return; } while (0)
 
