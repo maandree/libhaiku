@@ -7,7 +7,7 @@ DESCRIPTION
 	error messages. Instead of calling perror(3), the
 	program should call libhaiku_perror(3).
 
-RATIOANLE
+RATIONALE
 	It is more fun and harmonious this way.
 
 SEE ALSO
