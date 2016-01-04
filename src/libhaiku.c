@@ -88,8 +88,7 @@ static const char * random_haiku(const char *str, ... /*, NULL */)
  * @param  s  The argument to pass to `perror` in case we call back to it.
  *            `NULL` if you never what `perror` to be used.
  */
-void
-haiku(const char *s)
+void libhaiku_perror(const char *s)
 {
 #define H(...)    do { fprintf(stderr, "%s", random_haiku(__VA_ARGS__, NULL)); return; } while (0)
 

@@ -26,7 +26,7 @@
  * @param  s  The argument to pass to `perror` in case we call back to it.
  *            `NULL` if you never what `perror` to be used.
  */
-void haiku(const char *s);
+void libhaiku_perror(const char *s);
 
 
 #endif
