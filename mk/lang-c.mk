@@ -218,7 +218,7 @@ aux/%.pic.o: $(v)src/%.c $(foreach H,$(__H),$(v)$(H))
 bin/%.so:
 	@$(PRINTF_INFO) '\e[00;01;31mLD\e[34m %s\e[00;32m$A\n' "$@"
 	@$(MKDIR) -p bin
-	$(Q)$(__LD) -shared -Wl,-soname,$*.so.$(_SO_VERSION_$($*)) -o $@ $^ $(__LD_POST) #$Z
+	$(Q)$(__LD) -shared -Wl,-soname,$*.so.$(_SO_MAJOR_$($*)) -o $@ $^ $(__LD_POST) #$Z
 	@$(ECHO_EMPTY)
 
 # Link object files into a command.
