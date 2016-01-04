@@ -14,7 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+#ifndef LIBHAIKU_H
+#define LIBHAIKU_H
 
 
 /**
@@ -26,4 +27,7 @@
  *            `NULL` if you never what `perror` to be used.
  */
 void haiku(const char *s);
+
+
+#endif
 
