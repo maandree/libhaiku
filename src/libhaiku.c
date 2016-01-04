@@ -167,6 +167,11 @@ void libhaiku_perror(const char* s)
 	"Spring will come again,\n""But it will not bring with it\n""Any of your files.\n");
 #endif
 
+#ifdef EOWNERDEAD
+    case EOWNERDEAD: /* Reusing haiku from ENOENT. */
+      H("Three things are certain:\n""Death, taxes, and lost data.\n""Guess which has occurred.\n");
+#endif
+
 #ifdef EMSGSIZE
     case EMSGSIZE:
       H("A file that big?\n""It might be very useful.\n""But now it is gone.\n");
@@ -177,8 +182,13 @@ void libhaiku_perror(const char* s)
       H("Yesterday it worked.\n""Today it is not working.\n""Windows is like that.\n");
 #endif
 
+#ifdef EUCLEAN
+    case EUCLEAN:
+#endif
 #ifdef ENOTRECOVERABLE
     case ENOTRECOVERABLE:
+#endif
+#if defined(EUCLEAN) || defined(ENOTRECOVERABLE)
       H("Chaos reigns within.\n""Reflect, repent, and reboot.\n""Order shall return.\n");
 #endif
 
@@ -348,7 +358,6 @@ EHOSTUNREACH 113 No route to host
 EALREADY 114 Operation already in progress
 EINPROGRESS 115 Operation now in progress
 ESTALE 116 Stale file handle
-EUCLEAN 117 Structure needs cleaning
 ENOTNAM 118 Not a XENIX named type file
 ENAVAIL 119 No XENIX semaphores available
 EISNAM 120 Is a named type file
@@ -360,6 +369,5 @@ ENOKEY 126 Required key not available
 EKEYEXPIRED 127 Key has expired
 EKEYREVOKED 128 Key has been revoked
 EKEYREJECTED 129 Key was rejected by service
-EOWNERDEAD 130 Owner died
 */
 
