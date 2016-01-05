@@ -15,7 +15,7 @@ Invariant Sections being ``Free Software Needs Free Documentation'', the
 with no Front-Cover Texts, and with no Back-Cover Texts. A copy of the
 license is included in the section entitled ``GNU Free Documentation License''.
 @end quotation
-@c THIS WAS LAST CHANGED 2015-DECEMBER-17 UTC
+@c THIS WAS LAST CHANGED 2016-JANUARY-04 UTC
 @c When updated, please remember to update hardcopy-copying.texinfo too.
 @c --------------------------------------------------------------------------------
 @end copying
