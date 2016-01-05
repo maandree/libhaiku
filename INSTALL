@@ -74,6 +74,5 @@ to install. This rules are available:
 │   ps        │   install-ps        │   Include PostScript manual. (Texinfo)     │
 │   html      │   install-html      │   Include multifile HTML manual. (Texinfo) │
 │             │   install-man       │   Include man pages.                       │
-│ locale      │ install-locale      │ Include locales.                           │
 └─────────────┴─────────────────────┴────────────────────────────────────────────┘
 
