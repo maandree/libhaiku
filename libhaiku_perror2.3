@@ -1,0 +1,50 @@
+.TH LIBHAIKU_PERROR2 3 LIBHAIKU
+.SH NAME
+libhaiku_perror2 \- Print a poetic error message for a specific error
+
+.SH SYNOPSIS
+.nf
+#include <libhaiku.h>
+
+void libhaiku_perror2(const char *\fIprefix\fP, int \fIerrnum\fP);
+.fi
+.PP
+Link with
+.IR \-lhaiku .
+
+.SH DESCRIPTION
+The
+.BR libhaiku_perror2 ()
+function prints an error message in the
+form of a haiku, appropriate for the
+.B errno
+value specified in the
+.I errnum
+parameter, or if none are available,
+a generic one. If
+.I errnum
+is negative, a generic peom will be printed.
+.PP
+Unless
+.I NULL
+or empty, each line will be prefixed by the
+string specified in the
+.I prefix
+parameter, followed by a colon and a space.
+
+.SH RETURN VALUES
+None.
+
+.SH ERRORS
+Errors are not detected, but can be checked by calling
+.BR ferror (3)
+for
+.BR stderr (3)
+afterwards.
+
+.SH SEE ALSO
+.BR perror (3),
+.BR libhaiku (7),
+.BR libhaiku_perror (3),
+.BR libhaiku_generic (3),
+.BR libhaiku_strerror (3)

@@ -1,0 +1,24 @@
+.TH LIBHAIKU 7 LIBHAIKU
+.SH NAME
+libhaiku \- Poetic error messages
+
+.SH DESCRIPTION
+.B libhaiku
+is an API on top of a collection of haiku, that lets a programmer
+make a program print haiku for error messages by calling
+.BR libhaiku_perror (3)
+instead of
+.BR perror (3).
+
+.SH RATIONALE
+It is more fun and harmonious this way.
+
+.SH BUGS
+Most of the haiku uses a 5\-7\-5 syllable structure rather than
+5\-7\-5 morae structure.
+
+.SH SEE ALSO
+.BR libhaiku_generic (3),
+.BR libhaiku_perror (3),
+.BR libhaiku_perror2 (3),
+.BR libhaiku_strerror (3)
