@@ -1,0 +1,50 @@
+.TH LIBHAIKU_STRERROR 3 LIBHAIKU
+.SH NAME
+libhaiku_strerror \- Get a poetic error message for a specific error
+
+.SH SYNOPSIS
+.nf
+#include <libhaiku.h>
+
+const char *libhaiku_strerror(int \fIerrnum\fP, int *\fIgenericp\fP);
+.fi
+.PP
+Link with
+.IR \-lhaiku .
+
+.SH DESCRIPTION
+The
+.BR libhaiku_strerror ()
+function returns prints an error message in
+the form of a haiku, appropriate for the
+.B errno
+value specified in the
+.I errnum
+parameter, or if none are available,
+a generic one. If
+.I errnum
+is negative, a generic peom will be printed.
+.PP
+Unless
+.I genericp
+is
+.IR NULL ,
+.I *genericp
+will be set to 1 if a generic error message
+was return, and to 0 otherwise.
+
+.SH RETURN VALUES
+The
+.BR libhaiku_strerror ()
+returns a generic, poetic error message
+in the form of a haiku
+
+.SH ERRORS
+Impossible.
+
+.SH SEE ALSO
+.BR strerror (3),
+.BR libhaiku (7),
+.BR libhaiku_perror (3),
+.BR libhaiku_perro2 (3),
+.BR libhaiku_generic (3)

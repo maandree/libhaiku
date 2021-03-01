@@ -1,0 +1,35 @@
+.TH LIBHAIKU_GENERIC 3 LIBHAIKU
+.SH NAME
+libhaiku_generic \- Get a generic, poetic error message
+
+.SH SYNOPSIS
+.nf
+#include <libhaiku.h>
+
+const char *libhaiku_generic(void);
+.fi
+.PP
+Link with
+.IR \-lhaiku .
+
+.SH DESCRIPTION
+The
+.BR libhaiku_generic ()
+function returns an error message in the
+form of a haiku, that is generic and can
+be used for any error.
+
+.SH RETURN VALUES
+The
+.BR libhaiku_generic ()
+returns a generic, poetic error message
+in the form of a haiku
+
+.SH ERRORS
+Impossible.
+
+.SH SEE ALSO
+.BR libhaiku (7),
+.BR libhaiku_perror (3),
+.BR libhaiku_perror2 (3),
+.BR libhaiku_strerror (3)
