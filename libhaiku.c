@@ -31,12 +31,14 @@ static int
 random_int(int n)
 {
 	static int initialised = 0;
-	double r, ri;
+	double r;
+	int ri;
 	if (!initialised) {
 		srand((unsigned)time(NULL));
 		initialised = 1;
 	}
-	r = (double)rand() * (double)n / ((double)RAND_MAX + 1.0);
+	ri = rand();
+	r = (double)ri * (double)n / ((double)RAND_MAX + (double)1);
 	ri = ((int)r) % n;
 	return ri < 0 ? (ri + n) : ri;
 }
@@ -307,4 +309,4 @@ libhaiku_perror2(const char *prefix, int errnum)
  * @param  prefix  Unless `NULL` or empty, each line will be prefixed
  *                 by the specified string followed by a colon and a space
  */
-extern void libhaiku_perror(const char *prefix);
+extern inline void libhaiku_perror(const char *prefix);

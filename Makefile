@@ -16,21 +16,28 @@ LIB_VERSION = $(LIB_MAJOR).$(LIB_MINOR)
 MAN3 = libhaiku.7
 MAN7 = libhaiku_generic.3 libhaiku_perror.3 libhaiku_perror2.3 libhaiku_strerror.3
 
+OBJ = libhaiku.o
+HDR = libhaiku.h
+
+LOBJ = $(OBJ:.o=.lo)
+
 
 all: libhaiku.a libhaiku.$(LIBEXT)
+$(OBJ): $(HDR)
+$(LOBJ): $(HDR)
 
-libhaiku.o: libhaiku.c libhaiku.h
-	$(CC) -c -o $@ libhaiku.c $(CFLAGS) $(CPPFLAGS)
+.c.o:
+	$(CC) -c -o $@ $< $(CFLAGS) $(CPPFLAGS)
 
-libhaiku.lo: libhaiku.c libhaiku.h
-	$(CC) -fPIC -c -o $@ libhaiku.c $(CFLAGS) $(CPPFLAGS)
+.c.lo:
+	$(CC) -fPIC -c -o $@ $< $(CFLAGS) $(CPPFLAGS)
 
-libhaiku.$(LIBEXT): libhaiku.lo
-	$(CC) $(LIBFLAGS) -o $@ libhaiku.lo $(LDFLAGS)
+libhaiku.$(LIBEXT): $(LOBJ)
+	$(CC) $(LIBFLAGS) -o $@ $(LOBJ) $(LDFLAGS)
 
-libhaiku.a: libhaiku.o
+libhaiku.a: $(OBJ)
 	-rm -f -- $@
-	$(AR) rc $@ libhaiku.o
+	$(AR) rc $@ $(OBJ)
 	$(AR) -s $@
 
 install: libhaiku.$(LIBEXT) libhaiku.a
@@ -56,6 +63,9 @@ uninstall:
 	-cd -- "$(DESTDIR)$(MANPREFIX)/man7/" && rm -rf -- $(MAN7)
 
 clean:
-	-rm -f -- *.o *.lo *.a *.su *.$(LIBEXT) *.$(LIBEXT).* *.*.$(LIBEXT)
+	-rm -f -- *.o *.lo *.a *.su *.$(LIBEXT) *.$(LIBEXT).*
+
+.SUFFIXES:
+.SUFFIXES: .lo .o .c
 
 .PHONY: all install uninstall clean
