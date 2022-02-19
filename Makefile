@@ -3,15 +3,17 @@
 CONFIGFILE = config.mk
 include $(CONFIGFILE)
 
-# Change to macos.mk for Mac OS
-OSCONFIGFILE = linux.mk
-include $(OSCONFIGFILE)
+OS = linux
+# Linux:   linux
+# Mac OS:  macos
+# Windows: windows
+include mk/$(OS).mk
 
 
 LIB_MAJOR = 2
 LIB_MINOR = 0
-
 LIB_VERSION = $(LIB_MAJOR).$(LIB_MINOR)
+
 
 MAN3 = libhaiku.7
 MAN7 = libhaiku_generic.3 libhaiku_perror.3 libhaiku_perror2.3 libhaiku_strerror.3
@@ -47,6 +49,7 @@ install: libhaiku.$(LIBEXT) libhaiku.a
 	mkdir -p -- "$(DESTDIR)$(MANPREFIX)/man7"
 	cp -- libhaiku.a "$(DESTDIR)$(PREFIX)/lib/"
 	cp -- libhaiku.$(LIBEXT) "$(DESTDIR)$(PREFIX)/lib/libhaiku.$(LIBMINOREXT)"
+	$(FIX_INSTALL_NAME) "$(DESTDIR)$(PREFIX)/lib/libhaiku.$(LIBMINOREXT)"
 	ln -sf -- libhaiku.$(LIBMINOREXT) "$(DESTDIR)$(PREFIX)/lib/libhaiku.$(LIBMAJOREXT)"
 	ln -sf -- libhaiku.$(LIBMINOREXT) "$(DESTDIR)$(PREFIX)/lib/libhaiku.$(LIBEXT)"
 	cp -- libhaiku.h "$(DESTDIR)$(PREFIX)/include/"
