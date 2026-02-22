@@ -15,8 +15,8 @@ LIB_MINOR = 0
 LIB_VERSION = $(LIB_MAJOR).$(LIB_MINOR)
 
 
-MAN3 = libhaiku.7
-MAN7 = libhaiku_generic.3 libhaiku_perror.3 libhaiku_perror2.3 libhaiku_strerror.3
+MAN3 = libhaiku_generic.3 libhaiku_perror.3 libhaiku_perror2.3 libhaiku_strerror.3
+MAN7 = libhaiku.7
 
 OBJ = libhaiku.o
 HDR = libhaiku.h

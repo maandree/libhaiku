@@ -15,8 +15,8 @@ const char *libhaiku_generic(void);
  * Get a poetic error message
  * 
  * @param   errnum    `errno` value that the error message shall be selected for
- * @param   genericp  Unless `NULL`, will be set to 1 if the function didn't have
- *                    any haikus specific the the specified error, and had to
+ * @param   genericp  Unless `NULL`, will be set to 1 if the function did not have
+ *                    any haikus specific to the specified error, and had to
  *                    return a generic haiku, and to 0 otherwise
  * @return            A poetic error message
  */
